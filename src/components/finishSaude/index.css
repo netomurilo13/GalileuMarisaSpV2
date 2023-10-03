@@ -1,0 +1,24 @@
+.thank-you-page2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+  }
+  
+  .logo2 {
+    width: 305px;
+    height: 152px;
+  }
+  
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 18px;
+    color: #1e1e1e;
+  }
