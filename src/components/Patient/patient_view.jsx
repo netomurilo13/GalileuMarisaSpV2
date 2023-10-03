@@ -21,8 +21,11 @@ const PatientList = () => {
   let logoImage;
   if (currentURL.includes("apresentacaohra")) {
     logoImage = logo1;//Mudar depois para 2
+  } else if (currentURL.includes("ms.saudedafamiliadigital.prefeitura.sp.gov.br")) {
+    logoImage = logo2;
   } else if (group === "Saúde da Família Digital") {
     logoImage = logo2;
+    group = "São Paulo"
   } else if (currentURL.includes("ms.saudedafamiliadigital")) {
     logoImage = logo2;
   }
