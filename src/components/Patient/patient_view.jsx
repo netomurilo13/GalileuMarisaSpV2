@@ -16,19 +16,20 @@ const PatientList = () => {
   let group = new URLSearchParams(location.search).get("group");
   console.log(group)
   const currentURL = window.location.href;
+  let validState = false;
 
 
   let logoImage;
-  if (currentURL.includes("apresentacaohra")) {
-    logoImage = logo1;//Mudar depois para 2
-  } else if (currentURL.includes("ms.saudedafamiliadigital.prefeitura.sp.gov.br")) {
+  if (currentURL.includes("hra.saudedafamiliadigitalsp.com.br")) {
     logoImage = logo2;
-  } else if (group === "Saúde da Família Digital") {
-    logoImage = logo2;
-    group = "São Paulo"
-  } else if (currentURL.includes("ms.saudedafamiliadigital")) {
-    logoImage = logo2;
-  }
+    group = "São Paulo";
+    validState = true;
+  } else if (currentURL.includes("hra.galileusaude.com.br")) {
+    logoImage = logo1;
+    if(group == null){
+      group = "Tarumã"
+    }
+  } 
   else {
     logoImage = logo1;
   }
@@ -107,13 +108,14 @@ const PatientList = () => {
       </div>
     );
   }
-    return (
+   if(validState)
+   { return (
       <div className="App">
         {errorMessage || content}
         {isIframeVisible && (
           <iframe
             key={parameter}
-            src={`https://aiufa25qymk.typeform.com/to/WBNbUcDW#user_id=${parameter}&group=${group}`}
+            src={`https://aiufa25qymk.typeform.com/to/J9SXiRWS#user_id=${parameter}&group=${group}`}
             title="External App"
             className="external-iframe"
             style={{
@@ -128,7 +130,30 @@ const PatientList = () => {
           />
         )}
       </div>
-    );
+    );}else{
+      return (
+        <div className="App">
+          {errorMessage || content}
+          {isIframeVisible && (
+            <iframe
+              key={parameter}
+              src={`https://aiufa25qymk.typeform.com/to/WBNbUcDW#user_id=${parameter}&group=${group}`}
+              title="External App"
+              className="external-iframe"
+              style={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                border: "none",
+              }}
+              sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-top-navigation"
+            />
+          )}
+        </div>
+      );
+    }
 
 };
 
