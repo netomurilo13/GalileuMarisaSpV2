@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 
 const Analytics = ({ analyticsId }) => {
   const analyticsScript = `
@@ -16,7 +17,11 @@ const Analytics = ({ analyticsId }) => {
     });
   `;
 
-  return <script>{analyticsScript}</script>;
+  return (
+    <Helmet>
+      <script>{analyticsScript}</script>
+    </Helmet>
+  );
 };
 
 export default Analytics;

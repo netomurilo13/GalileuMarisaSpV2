@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 
 const Clarity = ({ clarityId }) => {
   const clarityScript = `
@@ -6,14 +7,20 @@ const Clarity = ({ clarityId }) => {
     c[a] = c[a] || function() { (c[a].q = c[a].q || []).push(arguments); };
     t = l.createElement(r);
     t.async = 1;
-    t.src = 'https://www.clarity.ms/tag/' + i;
+    t.src = 'https://www.clarity.ms/tag/' + ${clarityId};
     y = l.getElementsByTagName(r)[0];
     y.parentNode.insertBefore(t, y);
   })(window, document, 'clarity', 'script', ${clarityId});`;
   return (
-    <script id="mc_clarity" type="text/javascript" strategy="afterinteractive">
-      {clarityScript}
-    </script>
+    <Helmet>
+      <script
+        id="mc_clarity"
+        type="text/javascript"
+        strategy="afterinteractive"
+      >
+        {clarityScript}
+      </script>
+    </Helmet>
   );
 };
 
