@@ -10,11 +10,11 @@ const Clarity = ({ clarityId }) => {
     t.src = 'https://www.clarity.ms/tag/' + i;
     y = l.getElementsByTagName(r)[0];
     y.parentNode.insertBefore(t, y);
-  })(window, document, 'clarity', 'script', ${clarityId});`;
+  })(window, document, 'clarity', 'script', '${clarityId}');`;
   return (
     <Helmet>
       <script
-        id="mc_clarity"
+        id="ms_clarity"
         type="text/javascript"
         strategy="afterinteractive"
       >
