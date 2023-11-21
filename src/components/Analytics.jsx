@@ -13,7 +13,7 @@ const Analytics = ({ analyticsId }) => {
 
     gtag('js', new Date());
     gtag('config', '${analyticsId}', { 
-      page_path: windows.location.pathname,
+      page_path: window.location.pathname,
     });
   `;
 
