@@ -3,21 +3,18 @@ import "./../../index.css";
 import logo1 from "./../../assets/galileu_azul.png";
 import logo2 from "./../../assets/saude.png";
 import TagManager from "react-gtm-module";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import { useLocation } from "react-router-dom";
 
 const PatientList = () => {
-
-  
   const [isIframeVisible, setIframeVisible] = useState(false);
   const [isButtonClicked, setButtonClicked] = useState(false);
   const location = useLocation();
   let parameter = uuidv4();
   let group = new URLSearchParams(location.search).get("group");
-  console.log(group)
+  console.log(group);
   const currentURL = window.location.href;
   let validState = false;
-
 
   let logoImage;
   if (currentURL.includes("hra.saudedafamiliadigitalsp.com.br")) {
@@ -26,11 +23,10 @@ const PatientList = () => {
     validState = true;
   } else if (currentURL.includes("hra.galileusaude.com.br")) {
     logoImage = logo1;
-    if(group == null){
-      group = "Tarumã"
+    if (group == null) {
+      group = "Galileu";
     }
-  } 
-  else {
+  } else {
     logoImage = logo1;
   }
 
@@ -46,7 +42,7 @@ const PatientList = () => {
     setButtonClicked(true);
   };
 
-  console.log(parameter)
+  console.log(parameter);
 
   let errorMessage = null;
   let content = null;
@@ -108,14 +104,14 @@ const PatientList = () => {
       </div>
     );
   }
-   if(validState)
-   { return (
+  if (validState) {
+    return (
       <div className="App">
         {errorMessage || content}
         {isIframeVisible && (
           <iframe
             key={parameter}
-            src={`https://aiufa25qymk.typeform.com/to/J9SXiRWS#user_id=${parameter}&group=${group}`}
+            src={`https://aiufa25qymk.typeform.com/to/RheJGcd9#user_id=${parameter}&group=${group}`}
             title="External App"
             className="external-iframe"
             style={{
@@ -130,31 +126,31 @@ const PatientList = () => {
           />
         )}
       </div>
-    );}else{
-      return (
-        <div className="App">
-          {errorMessage || content}
-          {isIframeVisible && (
-            <iframe
-              key={parameter}
-              src={`https://aiufa25qymk.typeform.com/to/WBNbUcDW#user_id=${parameter}&group=${group}`}
-              title="External App"
-              className="external-iframe"
-              style={{
-                position: "fixed",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                border: "none",
-              }}
-              sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-top-navigation"
-            />
-          )}
-        </div>
-      );
-    }
-
+    );
+  } else {
+    return (
+      <div className="App">
+        {errorMessage || content}
+        {isIframeVisible && (
+          <iframe
+            key={parameter}
+            src={`https://aiufa25qymk.typeform.com/to/Jj5xbt9I#user_id=${parameter}&group=${group}`}
+            title="External App"
+            className="external-iframe"
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              border: "none",
+            }}
+            sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-top-navigation"
+          />
+        )}
+      </div>
+    );
+  }
 };
 
 export default PatientList;
