@@ -81,9 +81,9 @@ const PatientList = () => {
         />
         <div className="text-container">
           <p className="main-text">
-            Todas as informações que você ceder para mim serão usadas para
-            fornecer uma melhor consulta médica para você! Ao clicar para abrir
-            o formulário você concorda com a nossa{" "}
+            Todas as informações que você fornecer serão utilizadas para
+            oferecer um cuidado à saúde mais completo para você! Ao clicar para
+            abrir o formulário, você concorda com a nossa{" "}
             <a
               href="https://i9.med.br/termos-de-uso-da-plataforma-i9med-saude-digital/"
               target="_blank"
